@@ -7,7 +7,7 @@ logging.getLogger('j1939').setLevel(logging.DEBUG)
 logging.getLogger('can').setLevel(logging.DEBUG)
 
 
-def on_message(priority, pgn, sa, timestamp, data):
+def on_message(priority, pgn, sa, dest, timestamp, data):
     """Receive incoming messages from the bus
 
     :param int priority:
@@ -16,6 +16,8 @@ def on_message(priority, pgn, sa, timestamp, data):
         Parameter Group Number of the message
     :param int sa:
         Source Address of the message
+    :param int dest:
+        Destination Address of the message
     :param int timestamp:
         Timestamp of the message
     :param bytearray data:

@@ -78,7 +78,7 @@ class Feeder:
         assert data == expected_data[2]
         self._inject_messages_into_ecu()
 
-    def _on_message(self, priority, pgn, sa, timestamp, data):
+    def _on_message(self, priority, pgn, sa, dest, timestamp, data):
         """Feed incoming message to this testcase.
 
         :param int priority:
@@ -87,6 +87,8 @@ class Feeder:
             Parameter Group Number of the message
         :param sa:
             Source Address of the message
+        :param dest:
+            Destination Address of the message
         :param timestamp:
             Timestamp of the message
         :param bytearray data:
