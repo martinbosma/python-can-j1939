@@ -252,7 +252,8 @@ class Dm1:
         else:
             priority = 6
         # send pgn
-        self._ca.send_pgn(0, (self._pgn >> 8) & 0xFF, self._pgn & 0xFF, priority, self._data )
+        if self._ca.state == j1939.ControllerApplication.State.NORMAL:
+            self._ca.send_pgn(0, (self._pgn >> 8) & 0xFF, self._pgn & 0xFF, priority, self._data )
 
         # returning true keeps the timer event active
         return True
